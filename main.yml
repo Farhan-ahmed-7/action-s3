@@ -15,9 +15,10 @@ jobs:
     - name: Configure AWS Credentials
       uses: aws-actions/configure-aws-credentials@v1
       with:
-        AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-        AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        aws_access_key_id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        aws_s3_bucket: ${{ secrets.AWS_BUCKET_NAME }}
         aws-region: ap-south-1
 
     - name: Deploy static site to S3 bucket
-      run: aws s3 sync ./public/ s3://s3-github-demo --delete
+      run: aws s3 sync ./public/ s3://s3-github-bucket --delete
