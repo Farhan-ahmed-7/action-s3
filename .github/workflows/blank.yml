@@ -20,7 +20,7 @@ jobs:
         AWS_REGION: ${{ secrets.AWS_REGION }}
         
       name: Build React App
-        run: npm install && npm run build
+        run: npm start && npm run build
 
     - name: Deploy static site to S3 bucket
       run: aws s3 sync ./public/ s3://react121 --delete
